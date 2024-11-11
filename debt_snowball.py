@@ -41,7 +41,7 @@ def debt_snowball(loans, monthly_allocation):
             loans.pop(0)
 
         if loans == []:
-            print("\nYou will have paid off your loans in {} months!".format(month))
+            print("\nYou will have paid off your loans in {} years and {} months!".format(int(month/12), (month%12)))
         else: 
             for n in loans:
                 # do the formatting right here
@@ -49,9 +49,6 @@ def debt_snowball(loans, monthly_allocation):
             print("\t" + "-"*72)
             print("\tTotals \t\t| payment = ${:,.2f} \t| remaining balance = ${:,.2f}\n".format((determine_total(loans,2) + extra_payment), determine_total(loans,0)))
             month += 1
-
-# monthly payment
-monthly_payment = int(input("what do you want to pay every month? "))
 
 # months behind
 # if you are behind on your mortgage, you can make it into its own line item by subtracting the current month from the initial month
@@ -83,4 +80,13 @@ student_loan_4 = [2216, .02/12, (128/4), "Student Loan 4"]
 all_loans = [back_mortgage,credit_card,motorcycle_loan,lge_loan,student_loan_1,student_loan_2,student_loan_3,student_loan_4]
 
 # execute the script
+
+# monthly payment
+monthly_payment = 0
+minimum_required_payment = determine_total(all_loans, 2)
+while monthly_payment < minimum_required_payment:
+    monthly_payment = int(input("what do you want to pay every month? "))
+    if monthly_payment < minimum_required_payment:
+        print("Please select an amount greater than the minumum required payment of {:,.2f}".format(minimum_required_payment))
+        
 debt_snowball(all_loans, monthly_payment)
