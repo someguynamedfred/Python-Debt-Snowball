@@ -57,13 +57,14 @@ monthly_payment = int(input("what do you want to pay every month? "))
 # if you are behind on your mortgage, you can make it into its own line item by subtracting the current month from the initial month
 months_behind = 11-5
 
-# interest rates
+# interest rates (this is calculated monthly so APR will need to be divided in 12) 
 interest_credit_card = .20/12
 interest_motorcycle = .12/12
 interest_lge = .09/12
 
 # actual debts
 # loan_variable = [name, interest, min_payment]
+# again, interest is calculated monthly so APR will need to be divided in 12
 back_mortgage = [1127.87 * months_behind, 0, 200, "Back Mortgage"]
 credit_card = [951.69, interest_credit_card, 60, "Credit Card"]
 motorcycle_loan = [7540.08, interest_motorcycle, 202, "Motorcycle"]
@@ -71,6 +72,7 @@ lge_loan = [2627.46, interest_lge, 127, "LGE Loan"]
 
 # student loans
 # follows the same pattern as "actual debts"
+# again, interest is calculated monthly so APR will need to be divided in 12
 student_loan_1 = [3551, .02/12, (128/4), "Student Loan 1"]
 student_loan_2 = [3551, .02/12, (128/4), "Student Loan 2"]
 student_loan_3 = [2230, .02/12, (128/4), "Student Loan 3"]
